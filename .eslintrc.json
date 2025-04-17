@@ -1,3 +1,4 @@
+//jsx-key turned off
 {
   "extends": "next/core-web-vitals",
   "rules": {
