@@ -32,4 +32,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to access 
 
 ## Test Credentials
 - Username: qa_candidate
-- Password: testing123
+- Password: Testing123

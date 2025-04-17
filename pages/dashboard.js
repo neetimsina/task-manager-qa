@@ -9,10 +9,14 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState('all');
   const [categories] = useState(['Work', 'Personal', 'Shopping', 'Other']);
+  const [username, setUsername] = useState('User');
   const router = useRouter();
 
   useEffect(() => {
+    // Access localStorage safely only on the client side
     const isLoggedIn = localStorage.getItem('isLoggedIn');
+    setUsername(localStorage.getItem('username') || 'User');
+    
     if (!isLoggedIn) {
       router.push('/');
       return;
@@ -101,8 +105,6 @@ export default function Dashboard() {
     if (filter === 'completed') return task.completed;
     return true;
   });
-
-  const username = localStorage.getItem('username') || 'User';
 
   return (
     <div className={styles.container}>
