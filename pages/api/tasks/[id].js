@@ -1,4 +1,4 @@
-import { tasks } from './index';
+import { tasks, updateTasks } from './index';
 
 export default function handler(req, res) {
   const { id } = req.query;
@@ -7,17 +7,18 @@ export default function handler(req, res) {
     const updatedTask = req.body;
     
     // Update task
-    tasks = tasks.map(task => 
+    const newTasks = tasks.map(task => 
       task.id === id ? { ...task, ...updatedTask } : task
     );
+    updateTasks(newTasks);
     
     const task = tasks.find(task => task.id === id);
-    
     res.status(200).json(task);
   } 
   else if (req.method === 'DELETE') {
     // Delete task
-    tasks = tasks.filter(task => task.id !== id);
+    const newTasks = tasks.filter(task => task.id !== id);
+    updateTasks(newTasks);
     
     res.status(200).json({ message: 'Task deleted' });
   } 

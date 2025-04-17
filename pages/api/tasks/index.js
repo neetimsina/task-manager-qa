@@ -1,5 +1,5 @@
 // In-memory database
-export let tasks = [
+export const tasks = [
     {
       id: '1',
       title: 'Complete project proposal',
@@ -31,6 +31,14 @@ export let tasks = [
       createdAt: '2025-04-13T09:15:00Z'
     }
   ];
+  
+  // Function to update tasks array
+  export function updateTasks(newTasks) {
+    // Clear the array
+    tasks.length = 0;
+    // Add all new items
+    tasks.push(...newTasks);
+  }
   
   export default function handler(req, res) {
     if (req.method === 'GET') {
